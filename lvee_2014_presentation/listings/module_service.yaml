@@ -1,18 +1,12 @@
 - hosts: 10Kservers
-
   tasks:
     - name: Shutdown GPFS node
       command: mmshutdown
-
-    - name: start multipathd service
+    - name: Stop multipathd
       service: name=multipathd state=stopped
-
     - name: Flash multipath
       command: multipath -F
-
-    - name: Start ddn-ibsrp service
+    - name: Start ddn-ibsrp
       service: name=ddn-ibsrp state=restarted
-
-    - name: start multipathd service
+    - name: Start multipathd
       service: name=multipathd state=started
-
