@@ -1,0 +1,10 @@
+---
+- hosts: 10K-2
+  tasks:
+  - name: Assign IP to Eth interfaces
+    script: /root/src/configure_ifup.sh eth4 172.30.30.151
+
+- hosts: 10K-3
+  tasks:
+  - name: Assign IP to Eth interfaces
+    script: /root/src/configure_ifup.sh eth4 172.30.30.152

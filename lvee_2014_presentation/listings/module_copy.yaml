@@ -1,0 +1,5 @@
+- name: Setup SSH private key
+  copy: src={{ ssh_path }}/id_rsa dest=/root/.ssh/id_rsa owner=root group=root mode=0600
+
+- name: Setup SSH config file
+  copy: src={{ ssh_path }}/config dest=/root/.ssh/config

@@ -1,0 +1,6 @@
+DEVICE={{ item }}
+IPADDR={{ hostvars[inventory_hostname][item] }}
+PREFIX={{ prefix }}
+NM_CONTROLLED="no"
+ONBOOT="yes"
+BOOTPROTO=static

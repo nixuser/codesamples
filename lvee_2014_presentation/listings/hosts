@@ -1,0 +1,12 @@
+[10K]
+10K-1 ansible_ssh_host=10.10.10.28 ansible_ssh_user=root ansible_ssh_pass=mypass
+10K-2 ansible_ssh_host=10.10.10.25 ansible_ssh_user=root ansible_ssh_pass=mypass
+10K-3 ansible_ssh_host=10.10.10.26 ansible_ssh_user=root ansible_ssh_pass=mypass
+10K-4 ansible_ssh_host=10.10.10.27 ansible_ssh_user=root ansible_ssh_pass=mypass
+10K-5 ansible_ssh_host=10.10.10.13 ansible_ssh_user=root ansible_ssh_pass=mypass
+10K-6 ansible_ssh_host=10.10.10.14 ansible_ssh_user=root ansible_ssh_pass=mypass
+[10Kservers]
+10K-[1:4]
+[10Kclients]
+10K-5
+10K-6

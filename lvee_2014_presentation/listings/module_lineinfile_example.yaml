@@ -1,0 +1,9 @@
+- name: configure /etc/ddn/ddn-ibsrp.conf
+  lineinfile: dest=/etc/ddn/ddn-ibsrp.conf state=present line='SRP_DEVICES="mlx4_1:1 mlx4_1:2"'
+  notify:
+    - restart IBSRP
+
+handlers:
+  - name: restart IBSRP
+    service: name=ddn-ibsrp state=restarted
+
