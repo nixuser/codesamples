@@ -31,6 +31,30 @@
 % does not look nice, try deleting the line with the fontenc.
 
 
+\lstdefinelanguage{ansibleyaml}%
+  {morekeywords={name,hosts,tasks,command,handlers,template,with_items,%
+      authorized\_key, copy, lineinfile, service, notify},%
+   morekeywords=[2]{user,key,lookup,src,dest,owner,group,mode,%
+      state, line, ansible_ssh_host, ansible_ssh_pass, ansible_ssh_user},
+sensitive=false,
+}
+
+
+\lstset{%
+  %basicstyle=\footnotesize,
+  breakatwhitespace=true,
+  breaklines=true,
+  keywordstyle=\bfseries\color{green!40!black},
+  keywordstyle={[2]\color{blue}},
+  frame=single,
+  language=ansibleyaml} 
+
+\lstdefinestyle{custom_hosts}{%
+  frame=single,
+  language=ansibleyaml,
+  basicstyle=\footnotesize\ttfamily
+  }
+
 \title % (optional, use only with long paper titles)
 {Test environment configuration with Ansible.}
 
@@ -101,7 +125,7 @@
 
 \section{Introduction}
 
-\subsection{ Do you need to listen this presentation? }
+\subsection{Do you need to listen this presentation? }
 
 \begin{frame}{How often do you configure system?}
 
@@ -114,6 +138,18 @@
      Developer
   \item
      Project manager
+  \end{itemize}
+\end{frame}
+
+\subsection{Test environment description.}
+
+\begin{frame}{Cluster File Systems testing.}
+  \begin{itemize}
+  \item
+  Number of hosts
+  \item
+  How often do we reinstall?
+  \item
   \end{itemize}
 \end{frame}
 
@@ -130,36 +166,31 @@
   \end{itemize}
 \end{frame}
 
-\subsection{Test environment description.}
-\begin{frame}{Cluster File Systems testing.}
-  \begin{itemize}
-  \item
-  Number of hosts
-  \item
-  How often do we reinstall?
-  \item
-  \end{itemize}
-\end{frame}
 
 
 \section{About Ansible}
-\begin{frame}{What is difference?}
+\begin{frame}{What do you need to install?}
   \begin{itemize}
   \item
-  No agents
+  Push model.
   \item
-  Only SSH and Python
+  On clients. Only SSH and Python
+  \item
+  On controller. Python 2.6+, paramiko, PyYAML, jinja2, httplib2
   \end{itemize}
 \end{frame}
 
 \subsection{Inventory file.}
-\begin{frame}{Inevntory.}
+
+\lstset{style=custom_hosts}
+\begin{frame}{Inventory.}
   \begin{itemize}
   \item
   INI file with hosts description
   \item
   only host, group, combine group, filters 
   \end{itemize}
+  \lstinputlisting{listings/hosts}
 \end{frame}
 
 \subsection{Tasks file.}
@@ -168,25 +199,11 @@
   \item
   YAML file discribes actions on hosts
   \end{itemize}
+  \lstinputlisting[firstline=1, lastline=9]{listings/module_service.yaml}
 \end{frame}
 
-\lstdefinelanguage{ansibleyaml}%
-  {morekeywords={name,hosts,tasks,command,%
-      authorized\_key, copy, lineinfile, service, notify},%
-   morekeywords=[2]{user,key,lookup,src,dest,owner,group,mode,%
-      state, line},
-sensitive=false,
-}
 
-
-\lstset{%
-  %basicstyle=\footnotesize,
-  breakatwhitespace=true,
-  breaklines=true,
-  keywordstyle=\bfseries\color{green!40!black},
-  keywordstyle={[2]\color{blue}},
-  frame=single,
-  language=ansibleyaml} 
+\subsection{Modules.}
 
 \begin{frame}[fragile]
 \frametitle{Module authorized\_key}
@@ -206,6 +223,17 @@ sensitive=false,
   \lstinputlisting{listings/module_copy.yaml}
 \end{frame}
 
+
+\begin{frame}[fragile]
+\frametitle{Module service}
+  \begin{itemize}
+  \item
+  Manage services.
+  \end{itemize}
+  \lstinputlisting[firstline=8, lastline=9]{listings/module_service.yaml}
+  \lstinputlisting[firstline=14, lastline=15]{listings/module_service.yaml}
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Module lineinfile}
   \begin{itemize}
@@ -216,25 +244,36 @@ sensitive=false,
   \lstinputlisting{listings/module_lineinfile_example.yaml}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Module service}
-  \begin{itemize}
-  \item
-  Manage services.
-  \end{itemize}
-  \lstinputlisting[firstline=5, lastline=12]{listings/module_service.yaml}
-\end{frame}
-
-
-
-\subsection{Extension.}
-
-\begin{frame}{Extentions.}
-\end{frame}
-
 \section{If you need additional functions?}
 \subsection {More language constractions}
-\subsection {Write module for you task}
+\begin{frame}{Multipe ways to add new functionality.}
+  \begin{itemize}
+  \item
+    Scripts.
+  \item
+    Templates engine.
+  \item
+    Module in any language (return JSON), Python API
+  \end{itemize}
+\end{frame}
+
+\subsection {Network configuration.}
+
+\begin{frame}{Scripts.}
+  \lstinputlisting{listings/assign_IP_10K_with_script.yaml}
+\end{frame}
+
+\begin{frame}{Loops and variables.}
+  \lstinputlisting[firstline=2, lastline=8]{listings/10K-1}
+  \lstinputlisting[firstline=2, lastline=5]{listings/setup_lan.yaml}
+\end{frame}
+
+\begin{frame}{Templates engine.}
+  \lstinputlisting[firstline=2, lastline=8]{listings/10K-1}
+  \lstinputlisting[firstline=1, lastline=3]{listings/ifcfg.j2}
+  \lstinputlisting[firstline=7, lastline=9]{listings/setup_lan.yaml}
+\end{frame}
+
 
 
 \section*{Summary}
@@ -244,11 +283,11 @@ sensitive=false,
   % Keep the summary *very short*.
   \begin{itemize}
   \item
-    The \alert{first main message} of your talk in one or two lines.
+    Easy to install, use, extend.
   \item
-    The \alert{second main message} of your talk in one or two lines.
+    More time for other activities.
   \item
-    Perhaps a \alert{third message}, but not more than that.
+    I hope you will try Ansible.
   \end{itemize}
   
   % The following outlook is optional.
@@ -258,10 +297,9 @@ sensitive=false,
     Outlook
     \begin{itemize}
     \item
-      Something you haven't solved.
-      Conditional Delays 
+      Conditional delays.
     \item
-      Testing with Ansible
+      Testing with Ansible.
     \end{itemize}
   \end{itemize}
 \end{frame}

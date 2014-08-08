@@ -1,12 +1,13 @@
 ---
+# setup_lan.yaml
 - name: Ifdown network interface 
   command: ifdown {{item}} 
-  with_item: interfaces
+  with_items: interfaces
 
 - name: Assign IP address settings
-  template: src=ifcfg.j2 dest=/etc/sysconfig/network-scripts/ifcfg-{{interface}}
+  template: src=ifcfg.j2 dest=/etc/sysconfig/network-scripts/ifcfg-{{item}}
   with_items: interfaces
 
 - name: Ifdown network interface 
   command: ifup {{item}}
-  with_item: interfaces
+  with_items: interfaces
