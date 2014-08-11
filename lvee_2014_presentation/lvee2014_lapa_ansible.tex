@@ -1,6 +1,6 @@
 % $Header: /Users/joseph/Documents/LaTeX/beamer/solutions/conference-talks/conference-ornate-20min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
 
-\documentclass{beamer}
+\documentclass[16pt]{beamer}
 
 % Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
 %
@@ -17,8 +17,13 @@
 
 \mode<presentation>
 {
-  \usetheme{Warsaw}
-  \setbeamercovered{transparent}
+  %\usetheme{Warsaw}
+  \usetheme{default}
+  \setbeamercovered{invisible}
+  %\setbeamercovered{transparent}
+  %\usecolortheme{beaver}
+  \beamertemplatenavigationsymbolsempty
+  \usefonttheme{professionalfonts}
 }
 
 
@@ -58,8 +63,8 @@ sensitive=false,
 \title % (optional, use only with long paper titles)
 {Test environment configuration with Ansible.}
 
-\author[Lapa] % (optional, use only with lots of authors)
-{Vikentsi Lapa\inst{1}}
+\author[Vikentsi Lapa] % (optional, use only with lots of authors)
+{Vikentsi Lapa}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
@@ -130,30 +135,48 @@ sensitive=false,
 \begin{frame}{How often do you configure system?}
 
   \begin{itemize}
-  \item
+  \item<+->
      User 
-  \item
+  \item<+->
      Administrator
-  \item
+  \item<+->
      Developer
-  \item
+  \item<+->
      Project manager
+  \item<+->
+     Tester
   \end{itemize}
 \end{frame}
 
 \subsection{Test environment description.}
 
-\begin{frame}{Cluster File Systems testing.}
+\begin{frame}{Cluster File Systems Testing.}
   \begin{itemize}
   \item
-  Number of hosts
+  6 hosts per environment. 
   \item
+  5 environments. Can be more.
+  \end{itemize}
   How often do we reinstall?
+  \begin{itemize}
   \item
+  New builds or releases
+  \item
+  Multiple OS and different hardware (IB, 40GigE)
+  \item
+  Defects verification often requires new installation.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Special tools.}
+\begin{frame}{What to do?}
+Automate with language.
+  \begin{itemize}
+  \item
+  Python, Bash, Perl
+  \item
+  Insert you favourite here.
+  \end{itemize}
+or Special tools
   \begin{itemize}
   \item
     Chef
@@ -165,8 +188,6 @@ sensitive=false,
     Ansible
   \end{itemize}
 \end{frame}
-
-
 
 \section{About Ansible}
 \begin{frame}{What do you need to install?}
@@ -183,6 +204,7 @@ sensitive=false,
 \subsection{Inventory file.}
 
 \lstset{style=custom_hosts}
+\lstset{basicstyle=\scriptsize\ttfamily}
 \begin{frame}{Inventory.}
   \begin{itemize}
   \item
@@ -244,8 +266,8 @@ sensitive=false,
   \lstinputlisting{listings/module_lineinfile_example.yaml}
 \end{frame}
 
-\section{If you need additional functions?}
-\subsection {More language constractions}
+\section{If you need additional functions}
+\subsection {Additional language constructions.}
 \begin{frame}{Multipe ways to add new functionality.}
   \begin{itemize}
   \item
@@ -257,7 +279,7 @@ sensitive=false,
   \end{itemize}
 \end{frame}
 
-\subsection {Network configuration.}
+\subsection {Three ways of network configuration.}
 
 \begin{frame}{Scripts.}
   \lstinputlisting{listings/assign_IP_10K_with_script.yaml}
