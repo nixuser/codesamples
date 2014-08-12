@@ -169,37 +169,77 @@ sensitive=false,
 \end{frame}
 
 \begin{frame}{What to do?}
-Automate with language.
-  \begin{itemize}
-  \item
-  Python, Bash, Perl
-  \item
-  Insert you favourite here.
-  \end{itemize}
-or Special tools
-  \begin{itemize}
-  \item
-    Chef
-  \item
-    Puppet
-  \item
-    SaltStake
-  \item
-    Ansible
-  \end{itemize}
+\begin{columns}[T]
+  \begin{column}{.6\textwidth}
+        Automate with 
+        \begin{itemize}
+        \item
+        Python, Bash, Perl
+        \item
+        Insert you favourite here.
+        \end{itemize}
+
+        \vspace*{1\baselineskip}
+        or use special tools
+        \begin{itemize}
+        \item
+            Chef
+        \item
+            Puppet
+        \item
+            SaltStack
+        \item
+            Ansible
+        \end{itemize}
+    \end{column}
+  \begin{column}{.4\textwidth}
+    \includegraphics[scale=0.2]{images/Chef_Vertical_Reg_Without.png}
+
+    \includegraphics[scale=0.1]{images/logo_PL_vertical_RGB_lg.png}
+
+    \includegraphics[scale=1.9]{images/logo_salt_stack.png}
+
+    \includegraphics[scale=0.5]{images/logo_ansible.png}
+    \end{column}
+\end{columns}
 \end{frame}
 
 \section{About Ansible}
 \begin{frame}{What do you need to install?}
   \begin{itemize}
   \item
+  On controller.
+    \begin{itemize}
+        \item
+        Python 2.6+
+        \item
+        Paramiko 
+        \item
+        PyYAML 
+        \item
+        Jinja2
+    \end{itemize}
+  \item
+  On clients. 
+    \begin{itemize}
+        \item
+        Only SSH and Python. (Usually it is already installed.)
+    \end{itemize}
+  \item
   Push model.
-  \item
-  On clients. Only SSH and Python
-  \item
-  On controller. Python 2.6+, paramiko, PyYAML, jinja2, httplib2
   \end{itemize}
+  \note {%
+  Ansible by default manages machines over the SSH protocol.
+  You need install it only to one machine. 
+
+  Once Ansible is installed, it will not add a database, and there will be no
+  daemons to start or keep running. You only need to install it on one machine
+  (which could easily be a laptop) I use desktop.
+  When Ansible manages remote machines, it does not leave software installed or running on them, so there’s no real question about how to upgrade Ansible when moving to a new version.
+  }
 \end{frame}
+
+
 
 \subsection{Inventory file.}
 
@@ -281,7 +321,8 @@ or Special tools
 
 \subsection {Three ways of network configuration.}
 
-\begin{frame}{Scripts.}
+\begin{frame}{Module script.}
+  script - Runs a local script on a remote node after transferring it.
   \lstinputlisting{listings/assign_IP_10K_with_script.yaml}
 \end{frame}
 
@@ -290,10 +331,10 @@ or Special tools
   \lstinputlisting[firstline=2, lastline=5]{listings/setup_lan.yaml}
 \end{frame}
 
-\begin{frame}{Templates engine.}
+\begin{frame}{Module templates.}
   \lstinputlisting[firstline=2, lastline=8]{listings/10K-1}
-  \lstinputlisting[firstline=1, lastline=3]{listings/ifcfg.j2}
   \lstinputlisting[firstline=7, lastline=9]{listings/setup_lan.yaml}
+  \lstinputlisting[firstline=1, lastline=4]{listings/ifcfg.j2}
 \end{frame}
 
 \begin{frame}{Screen shot with cow.}
