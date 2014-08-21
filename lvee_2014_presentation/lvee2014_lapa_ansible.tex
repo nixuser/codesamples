@@ -259,7 +259,7 @@ sensitive=false,
 \begin{frame}{Playbooks.}
   \begin{itemize}
   \item
-  YAML file discribes actions on hosts
+  YAML file describes actions on hosts
   \end{itemize}
   \lstinputlisting[firstline=1, lastline=9]{listings/module_service.yaml}
 \end{frame}
@@ -308,14 +308,25 @@ sensitive=false,
 
 \section{If you need additional functions}
 \subsection {Additional language constructions.}
-\begin{frame}{Multipe ways to add new functionality.}
+\begin{frame}{Multiple ways to add new functionality.}
+  \begin{itemize}
+  \item
+    Python API
+  \item
+    Developing Dynamic Inventory Sources
+  \item
+    Developing Modules
+  \item
+    Developing Plugins
+  \end{itemize}
+ Task: Network interface configuration
   \begin{itemize}
   \item
     Scripts.
   \item
     Templates engine.
   \item
-    Module in any language (return JSON), Python API
+    Module (not implemented) 
   \end{itemize}
 \end{frame}
 
@@ -324,6 +335,7 @@ sensitive=false,
 \begin{frame}{Module script.}
   script - Runs a local script on a remote node after transferring it.
   \lstinputlisting{listings/assign_IP_10K_with_script.yaml}
+  It is usually preferable to write Ansible modules than pushing scripts.
 \end{frame}
 
 \begin{frame}{Loops and variables.}
@@ -336,8 +348,6 @@ sensitive=false,
   \lstinputlisting[firstline=7, lastline=9]{listings/setup_lan.yaml}
   \lstinputlisting[firstline=1, lastline=4]{listings/ifcfg.j2}
 \end{frame}
-
-
 
 
 \section*{Summary}
@@ -353,19 +363,8 @@ sensitive=false,
   \item
     I hope you will try Ansible.
   \end{itemize}
+  \lstinputlisting{listings/cowsay}
   
-  % The following outlook is optional.
-  \vskip0pt plus.5fill
-  \begin{itemize}
-  \item
-    Outlook
-    \begin{itemize}
-    \item
-      Conditional delays.
-    \item
-      Testing with Ansible.
-    \end{itemize}
-  \end{itemize}
 \end{frame}
 
 
@@ -374,17 +373,29 @@ sensitive=false,
 \section<presentation>*{\appendixname}
 \subsection<presentation>*{For Further Reading}
 
-\begin{frame}[allowframebreaks]
+\begin{frame}
   \frametitle<presentation>{For Further Reading}
-  Ansible project
-   http://www.ansible.com/
-  This presentation
-   https://github.com/nixuser/codesamples/
+
+  \begin{itemize}
+  \item
+    \href{ http://www.ansible.com/}{Ansible project}
+
+    \url {http://www.ansible.com/}
+  \item
+    \href{ http://docs.ansible.com/ }{Documentation}
+
+    \url{http://docs.ansible.com/}
+  \item
+    \href{https://github.com/ansible/ansible}{Source code}
+
+    \url{https://github.com/ansible/ansible}
+  \item
+    \href{ https://github.com/nixuser/codesamples/tree/master/lvee_2014_presentation}{Presentation with listings}
+
+    \url{https://github.com/nixuser/codesamples/tree/master/lvee_2014_presentation}
+  \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \lstinputlisting{listings/cowsay}
-\end{frame}
 
 \end{document}
 
