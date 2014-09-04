@@ -1,0 +1,1 @@
+xfshost ansible_ssh_host=10.10.11.112 ansible_ssh_user=fedora

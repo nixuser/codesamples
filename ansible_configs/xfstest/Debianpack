@@ -1,0 +1,12 @@
+---
+packages:
+  - git
+  - make
+  - autoconf
+  - gcc
+  - libtool
+  - bc
+  - libblkid-dev
+  - uuid-dev
+  - libattr1-dev
+  - libacl1-dev

@@ -1,0 +1,5 @@
+---
+- name: install packages 
+  action: >
+    {{ansible_pkg_mgr}} name={{ item }} state=present
+  with_items: packages 

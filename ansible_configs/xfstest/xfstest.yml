@@ -1,0 +1,8 @@
+---
+- hosts: xfshost
+  vars_files:
+    - "/root/src/ansible_configs/{{ ansible_os_family }}pack"
+  sudo: yes
+
+  tasks:
+    - include: /root/src/ansible_configs/tasks/install_xfstest.yml
