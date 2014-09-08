@@ -46,7 +46,7 @@ sensitive=false,
 
 
 \lstset{%
-  %basicstyle=\footnotesize,
+  basicstyle=\normalsize,
   breakatwhitespace=true,
   breaklines=true,
   keywordstyle=\bfseries\color{green!40!black},
@@ -57,7 +57,8 @@ sensitive=false,
 \lstdefinestyle{custom_hosts}{%
   frame=single,
   language=ansibleyaml,
-  basicstyle=\footnotesize\ttfamily
+  %basicstyle=\huge
+  %basicstyle=\footnotesize\ttfamily
   }
 
 \title % (optional, use only with long paper titles)
@@ -244,7 +245,8 @@ sensitive=false,
 \subsection{Inventory file.}
 
 \lstset{style=custom_hosts}
-\lstset{basicstyle=\scriptsize\ttfamily}
+%\lstset{basicstyle=\scriptsize\ttfamily}
+%\lstset{basicstyle=\large}
 \begin{frame}{Inventory.}
   \begin{itemize}
   \item
@@ -330,7 +332,7 @@ sensitive=false,
   \end{itemize}
 \end{frame}
 
-\subsection {Three ways of network configuration.}
+\subsection {Add new functions for network configuration.}
 
 \begin{frame}{Module script.}
   script - Runs a local script on a remote node after transferring it.
@@ -343,10 +345,11 @@ sensitive=false,
   \lstinputlisting[firstline=2, lastline=5]{listings/setup_lan.yaml}
 \end{frame}
 
+\lstset{basicstyle=\small}
 \begin{frame}{Module templates.}
-  \lstinputlisting[firstline=2, lastline=8]{listings/10K-1}
-  \lstinputlisting[firstline=7, lastline=9]{listings/setup_lan.yaml}
   \lstinputlisting[firstline=1, lastline=4]{listings/ifcfg.j2}
+  \lstinputlisting[firstline=7, lastline=9]{listings/setup_lan.yaml}
+  \lstinputlisting[firstline=2, lastline=8]{listings/10K-1}
 \end{frame}
 
 
